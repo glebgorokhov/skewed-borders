@@ -24,8 +24,24 @@
   </svg>
 </template>
 
-<script setup>
-import { computed, nextTick, onMounted, onUnmounted, ref } from "vue";
+<script lang="ts" setup>
+import {
+  computed,
+  nextTick,
+  onMounted,
+  onUnmounted,
+  PropType,
+  Ref,
+  ref
+} from "vue";
+
+type Coordinate = {
+  x: number,
+  y: number,
+  r: number,
+  p1: number[],
+  p2: number[],
+}
 
 const props = defineProps({
   width: {
@@ -44,25 +60,25 @@ const props = defineProps({
     default: "mypath",
   },
   el: {
-    type: Object,
+    type: Object as PropType<Element>,
   },
 });
+
+let resizeObserver: null | ResizeObserver = null;
+const corners = [7, [7, 10], 7, [7, 15]];
 
 const width = ref(100); // Default values
 const height = ref(50); // Default values
 
-const degreesToRadians = (degrees) => degrees * (Math.PI / 180);
+const degreesToRadians = (degrees: number) => degrees * (Math.PI / 180);
 
-const getCathetus = (radius, cos = false) => {
+const getCathetus = (radius: number, cos = false) => {
   const angle = degreesToRadians(45);
   return radius * (cos ? Math.cos(angle) : Math.sin(angle));
 };
 
-let resizeObserver = null;
-const corners = [7, [7, 10], 7, [7, 15]];
-
 const circles = computed(() => {
-  const coordinates = [];
+  const coordinates: Coordinate[] = [];
 
   corners.forEach((corner, i) => {
     if (Array.isArray(corner)) {
