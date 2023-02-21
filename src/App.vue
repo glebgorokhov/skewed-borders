@@ -20,6 +20,7 @@ const content = ref();
   clip-path: url(#mypath);
   box-sizing: border-box;
   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 
 .shape {
