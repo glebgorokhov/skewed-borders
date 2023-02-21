@@ -44,14 +44,6 @@ type Coordinate = {
 }
 
 const props = defineProps({
-  width: {
-    type: Number,
-    default: 100,
-  },
-  height: {
-    type: Number,
-    default: 100,
-  },
   svg: {
     type: Boolean,
   },
