@@ -31,7 +31,6 @@ import {
   onMounted,
   onUnmounted,
   PropType,
-  Ref,
   ref
 } from "vue";
 
