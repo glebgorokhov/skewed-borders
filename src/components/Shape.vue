@@ -8,7 +8,7 @@
           :cy="circle.y"
           :r="circle.r"
       />
-      <polygon :points="points" />
+      <polygon :points="points"/>
     </clipPath>
 
     <g v-if="svg">
@@ -19,7 +19,7 @@
           :cy="circle.y"
           :r="circle.r"
       />
-      <polygon :points="points" />
+      <polygon :points="points"/>
     </g>
   </svg>
 </template>
@@ -220,7 +220,7 @@ onMounted(() => {
       resizeObserver = new ResizeObserver((entries) => {
         for (const entry of entries) {
           if (entry.contentBoxSize) {
-            const { inlineSize, blockSize } = entry.borderBoxSize[0];
+            const {inlineSize, blockSize} = entry.borderBoxSize[0];
 
             width.value = inlineSize;
             height.value = blockSize;
