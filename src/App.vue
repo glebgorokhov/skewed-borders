@@ -1,6 +1,8 @@
 <template>
-  <div class="content" ref="content">Content</div>
-  <shape :el="content" class="shape" />
+  <div class="content" ref="content">
+    <span class="inner">Content</span>
+    <shape :el="content" class="shape" svg :corners="[7, [7, 10], 7, [10, 5]]" />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -14,18 +16,28 @@ const content = ref();
 <style lang="scss" scoped>
 .content {
   padding: 18px 24px;
-  background: rgba(white, .7);
-  color: black;
+  color: white;
   font-weight: 700;
   clip-path: url(#mypath);
   box-sizing: border-box;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  position: relative;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
 }
 
 .shape {
-  position: fixed;
-  right: 100vw;
-  bottom: 100vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  stroke-width: 2px;
+  stroke: rgba(#FFD76F, .5);
+  fill: rgba(#261F13, .24);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
 </style>
